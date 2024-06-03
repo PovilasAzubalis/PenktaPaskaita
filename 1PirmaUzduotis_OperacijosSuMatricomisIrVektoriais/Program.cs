@@ -1,37 +1,88 @@
 ﻿namespace PirmaUzduotis_OperacijosSuMatricomisIrVektoriais
 {
+        //Sukurkite klasę Matrica, kuri turės dvimatį masyvą ir metodus:
+        //IsvestiMatrica - išvesti matricą į konsolę.
+        //Transponuoti - grąžina transponuotą matricą.
+        //Sudeti - sudeda dvi matricas.
+        //Dauginti - daugina matricą iš vektoriaus.
+        //Sukurkite klasę Vektorius, kuri turės vienmatį masyvą ir metodą:
+        //IsvestiVektorius - išvesti vektorių į konsolę.
         public class Program
         {
                 public static void Main(string[] args)
                 {
+                        Matrica matrica = new Matrica();
+                        matrica.RndMatrica();
+                        matrica.IsvestiMatrica();
 
+                        matrica.Transponuoti();
+
+                        Matrica matrica1 = new Matrica();
+                        matrica1.RndMatrica();
+
+                        Matrica matrica2 = new Matrica();
+                        matrica2.RndMatrica();
+
+                        Matrica matricaSum = new Matrica();
                 }
 
         }
 
-        public class Matrica(string[] args)
+        public class Matrica
         {
-                int[,] matrica1 = { { 1, 2, 3 }, { 1, 2, 3 }, { 1, 2, 3 } };
 
-                int x = matrica1.GetLength(0);
-                int y = matrica1.GetLength(1);
-                int y = matrica1.GetLength(2);
-                IsvestiMatrica(ref int x, ref int y, ref int z);
+                int[,] matrica = new int[3, 3];
 
-                static void IsvestiMatrica(ref int x, ref int y, ref int z)
+                public void RndMatrica()
                 {
-                        for (int i = 0; i < x; i++)
+                        Random rnd = new Random();
+                        for (int i = 0; i < matrica.GetLength(0); i++)
                         {
-                                Console.Write(x);
-
-                                for (int j = 0; j < numbers.GetLength(1); j++)
+                                for (int j = 0; j < matrica.GetLength(1); j++)
                                 {
-                                        Console.Write(Matrica.matrica1[i, j] + " ");
-
+                                        matrica[i, j] = rnd.Next(1, 10);
                                 }
-                                Console.WriteLine();
                         }
                 }
 
+                public void IsvestiMatrica()
+                {
+                        for (int i = 0; i < 3; i++)
+                        {
+                                Console.WriteLine();
+                                for (int j = 0; j < 3; j++)
+                                {
+                                        Console.Write("{0} ", matrica[i, j]);
+                                }
+                        }
+                        Console.WriteLine();
+                }
 
+                public void Transponuoti()
+                {
+                        for (int i = 0; i < 3; i++)
+                        {
+                                Console.WriteLine();
+                                for (int j = 0; j < 3; j++)
+                                {
+                                        Console.Write("{0} ", matrica[j, i]);
+                                }
+                        }
+                        Console.WriteLine();
+                }
+
+                public Matrica Sudeti(ref Matrica matrica1, ref Matrica matrica2, out Matrica matricaSum)
+                {
+                        for (int i = 0; i < 3; i++)
+                        {
+                                for (int j = 0; j < 3; j++)
+                                {
+                                        return matricaSum= matrica1[i,j] + matrica2[i,j];
+                                }
+
+
+                        }
+
+                }
         }
+}
